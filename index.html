@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sky Reader</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Add styles page -->
+    <link rel="stylesheet" href="" />
 </head>
 <body>
     <header>
@@ -23,24 +23,28 @@
             <ul id="previous-search"></ul>
         </section>
         <h2 id="weather-results" class="results"></h2>
-        <div id="big-box">
-            <div id="mid-box">
-                <div id="loc-box">
-                    <p id="loc-title"></p>
-                    <p id="loc-area"></p>
-                    <p id="loc-image"></p>
-                </div>
+        <div id="large-box">
+            <div id="big-box" class="hide1">
+                <div id="loc-box" class="hide2">
+                    <div id="loc-title">                    
+                        <p id="loc-area"></p>
+                        <p id="loc-cur-date"></p>
+                        <img src="" id="loc-image" alt=""></p>
+                    </div>
+                </div>           
                 <div id="lox box2">
                     <p id="loc-temp"></p>
                     <p id="loc-wind"></p>
                     <p id="loc-humid"></p>
-                </div>        
-                <div id="fcast-box">
-                    <h2>Forecast</h2>
-                    <div id="fcast-results">
-                    </div>
                 </div>
             </div>
         </div>
+            <div id="fcast-box">
+                <h2 class="fcast-title">Forecast</h2>
+                <div id="fcast-results">
+                </div>
+            </div>
     </div>
 </body>
+<script src="./script/script.js"></script>
+</html>
