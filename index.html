@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sky Reader</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+    <header>
+        <h1>Sky Reader</h1>
+    </header>
+    <div huge-box>
+        <section>
+            <h2>Search Location</h2>
+            <form id="city-search" class="type">
+                <input type="text" id="area" autofocus="true" class="textbar"   placeholder="Houston">
+                <button type="submit" class="search-btn">
+                Type Location Here
+                </button>
+            </form>
+            <ul id="previous-search"></ul>
+        </section>
+        <h2 id="weather-results" class="results"></h2>
+        <div id="big-box">
+            <div id="mid-box">
+                <div id="loc-box">
+                    <p id="loc-title"></p>
+                    <p id="loc-area"></p>
+                    <p id="loc-image"></p>
+                </div>
+                <div id="lox box2">
+                    <p id="loc-temp"></p>
+                    <p id="loc-wind"></p>
+                    <p id="loc-humid"></p>
+                </div>        
+                <div id="fcast-box">
+                    <h2>Forecast</h2>
+                    <div id="fcast-results">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
