@@ -20,10 +20,10 @@ let largeBox = document.querySelector("#large-box");
 //The showSearches() function is defined to populate the recent searches list from local storage. 
 function showSearches() {
     prevSearch.innerHTML = "";
-    let recentSearches = JSON.parse(localStorage.getItem("recentSearches"));
-    if (recentSearches && recentSearches.length > 0) {
-        recentSearches = [...new Set(recentSearches)];
-        recentSearches.forEach((item) => {
+    let prevSearchRe = JSON.parse(localStorage.getItem("prevSearchRe"));
+    if (prevSearchRe && prevSearchRe.length > 0) {
+        prevSearchRe = [...new Set(prevSearchRe)];
+        prevSearchRe.forEach((item) => {
             let recentSearchItem = document.createElement("li");
             recentSearchItem.id = "recent-search-li";
             recentSearchItem.textContent = item;
@@ -55,76 +55,76 @@ async function searchHandle(e, shouldPushToLs = true) {
         const response2 = await fetch(
             `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=a1ae3427b7bdb878344cb4b25e0df8f9`
         );
-        const result2 = await response2.text();
-        const locationData2 = JSON.parse(result2);
-        console.log(locationData2);
+        const secResult = await response2.text();
+        const secLocData = JSON.parse(secResult);
+        console.log(secLocData);
 
-        let usedDates = [];
-        let usedDateData = [];
-        for (let i = 0; i < locationData2.list.length; i++) {
-            const itemDate = new Date(locationData2.list[i].dt * 1000);
-            if (!usedDates.includes(itemDate.getDay()) && locationData2.list[i].weather[0].icon.includes("d")) {
-                usedDates.push(itemDate.getDay());
-                usedDateData.push(locationData2.list[i]);
+        let oldDate = [];
+        let oldDateData = [];
+        for (let i = 0; i < secLocData.list.length; i++) {
+            const itemDate = new Date(secLocData.list[i].dt * 1000);
+            if (!oldDate.includes(itemDate.getDay()) && secLocData.list[i].weather[0].icon.includes("d")) {
+                oldDate.push(itemDate.getDay());
+                oldDateData.push(secLocData.list[i]);
             }
         }
 
-        let locCurDate = document.querySelector("#current-date");
-        let locImage = document.querySelector("#weather-icon");
-        let locTemp = document.querySelector("#location-temp");
-        let locWind = document.querySelector("#location-wind");
-        let locHumid = document.querySelector("#location-humidity");
+        let locCurDate = document.querySelector("#loc-cur-date");
+        let locImage = document.querySelector("#loc-image");
+        let locTemp = document.querySelector("#loc-temp");
+        let locWind = document.querySelector("#loc-wind");
+        let locHumid = document.querySelector("#loc-humid");
 
-        locArea.textContent = locationData2.city.name;
+        locArea.textContent = secLocData.city.name;
         locCurDate.textContent = ` (${new Date().toLocaleDateString()})`;
-        locImage.setAttribute("src", `https://openweathermap.org/img/wn/${usedDateData[0].weather[0].icon}@2x.png`);
-        locTemp.textContent = `Temp: ${usedDateData[0].main.temp} °F`;
-        locWind.textContent = `Wind: ${usedDateData[0].wind.speed} MPH`;
-        locHumid.textContent = `Humidity: ${usedDateData[0].main.humidity} %`;
+        locImage.setAttribute("src", `https://openweathermap.org/img/wn/${oldDateData[0].weather[0].icon}@2x.png`);
+        locTemp.textContent = `Temp: ${oldDateData[0].main.temp} °F`;
+        locWind.textContent = `Wind: ${oldDateData[0].wind.speed} MPH`;
+        locHumid.textContent = `Humidity: ${oldDateData[0].main.humidity} %`;
 
         // The weather data is then parsed and used to populate various elements in the HTML document to display the current weather and forecast.
         // The recent search is saved to local storage to be displayed later.
         if (shouldPushToLs) {
-            let recentSearches = JSON.parse(localStorage.getItem("recentSearches"));
-            if (recentSearches && recentSearches.length > 0) {
-                recentSearches.push(area.value);
-                localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+            let prevSearchRe = JSON.parse(localStorage.getItem("prevSearchRe"));
+            if (prevSearchRe && prevSearchRe.length > 0) {
+                prevSearchRe.push(area.value);
+                localStorage.setItem("prevSearchRe", JSON.stringify(prevSearchRe));
             } else {
-                let newSearches = [];
-                newSearches.push(area.value);
-                localStorage.setItem("recentSearches", JSON.stringify(newSearches));
+                let newSearchRe = [];
+                newSearchRe.push(area.value);
+                localStorage.setItem("prevSearchRe", JSON.stringify(newSearchRe));
             }
         }
         fcastResults.innerHTML = "";
 
-        usedDateData
+        oldDateData
             .filter((item) => new Date(item.dt * 1000).getDay() !== new Date().getDay())
             .forEach((item) => {
-                const forecastItemEl = document.createElement("div");
-                const forecastItemDateEl = document.createElement("p");
-                const forecastItemIconEl = document.createElement("img");
-                const forecastItemTempEl = document.createElement("p");
-                const forecastItemWindEl = document.createElement("p");
-                const forecastItemHumidityEl = document.createElement("p");
+                const fcastReEl = document.createElement("div");
+                const fcastReDateEl = document.createElement("p");
+                const fcastReImageEl = document.createElement("img");
+                const fcastReTempEl = document.createElement("p");
+                const fcastReWindEl = document.createElement("p");
+                const fcastReHumEl = document.createElement("p");
 
-                forecastItemEl.id = "forecast-item-container";
-                forecastItemDateEl.id = "forecast-date";
-                forecastItemIconEl.id = "weather-icon";
-                forecastItemTempEl.id = "forecast-etc";
-                forecastItemWindEl.id = "forecast-etc";
-                forecastItemHumidityEl.id = "forecast-etc";
+                fcastReEl.id = "fcast-itm-box";
+                fcastReDateEl.id = "forecast-date";
+                fcastReImageEl.id = "loc-image";
+                fcastReTempEl.id = "fcast-etc";
+                fcastReWindEl.id = "fcast-etc";
+                fcastReHumEl.id = "forecast-etc";
 
-                forecastItemDateEl.innerText = ` (${new Date(item.dt * 1000).toLocaleDateString()})`;
-                forecastItemIconEl.setAttribute("src", `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`);
-                forecastItemTempEl.innerText = `Temp: ${item.main.temp} °F`;
-                forecastItemWindEl.innerText = `Wind: ${item.wind.speed} MPH`;
-                forecastItemHumidityEl.innerText = `Humidity: ${item.main.humidity} %`;
+                fcastReDateEl.innerText = ` (${new Date(item.dt * 1000).toLocaleDateString()})`;
+                fcastReImageEl.setAttribute("src", `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`);
+                fcastReTempEl.innerText = `Temp: ${item.main.temp} °F`;
+                fcastReWindEl.innerText = `Wind: ${item.wind.speed} MPH`;
+                fcastReHumEl.innerText = `Humidity: ${item.main.humidity} %`;
 
-                forecastItemEl.append(forecastItemDateEl, forecastItemIconEl, forecastItemTempEl, forecastItemWindEl, forecastItemHumidityEl);
-                fcastResults.appendChild(forecastItemEl);
+                fcastReEl.append(fcastReDateEl, fcastReImageEl, fcastReTempEl, fcastReWindEl, fcastReHumEl);
+                fcastResults.appendChild(fcastReEl);
             });
 
-        results.classList.add("hidden");
+        results.classList.add("hide2");
         largeBox.classList.remove("hidden");
 
         showSearches();

@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+}
+
+header {
+  background: radial-gradient(274px at 7.4% 17.9%, rgb(65, 89, 228) 0.3%, rgb(167, 139, 252) 90.5%);
+  color: white;
+  width: 100vw;
+  padding: 10px;
+  text-align: center;
+}
+
+.huge-box {
+  width: 100vw;
+  display: flex;
+  gap: 30px;
+}
+
+section {
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 17vw;
+}
+
+.large-box {
+  width: 100%;
+}
+
+.results {
+  margin-top: 50px;
+  margin-left: 400px;
+}
+
+.type {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#area {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid grey;
+}
+
+.search-btn {
+  cursor: pointer;
+  border: none;
+  padding: 8px;
+  background-color: rgb(65, 89, 228);
+  color: white;
+  border-radius: 8px;
+}
+
+.type-title {
+  margin-bottom: 10px;
+}
+/* Stopped here */
+.fcast-box {
+  margin-top: 15px;
+}
+
+.fcast-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#loc-area,
+#loc-cur-date {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+#loc-image {
+  height: 40px;
+  object-fit: contain;
+  align-self: flex-start;
+}
+
+.loc-box {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  gap: 10px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  /* padding-right: 0; */
+}
+
+#big-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 65vw;
+}
+
+#loc-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.hide2 {
+  display: none;
+}
+
+ul {
+  margin-top: 10px;
+  padding-inline-start: 0px;
+}
+
+li {
+  cursor: pointer;
+  width: 300px;
+  background-color: lightgray;
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#fcast-results {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  line-height: 30px;
+}
+
+/* May need to discard */
+#fcast-itm-box {
+  width: 150px;
+  display: flex;
+
+  flex-direction: column;
+  background-color: rgb(45, 46, 45);
+  color: white;
+  padding: 10px;
+}
+
+li:hover {
+  background-color: gray;
+  opacity: 70%;
+}
+
+#previous-search > li {
+  width: 95%;
+}

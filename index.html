@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sky Reader</title>
     <!-- Add styles page -->
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="./styles/style.css" />
 </head>
 <body>
     <header>
         <h1>Sky Reader</h1>
     </header>
-    <div huge-box>
+    <div class="huge-box">
         <section>
-            <h2>Search Location</h2>
+            <h2 class="type-title">Search Location</h2>
             <form id="city-search" class="type">
-                <input type="text" id="area" autofocus="true" class="textbar"   placeholder="Houston">
+                <input name="location" id="area" autofocus="true" class="textbar"   placeholder="Houston">
                 <button type="submit" class="search-btn">
                 Type Location Here
                 </button>
@@ -23,10 +23,10 @@
             <ul id="previous-search"></ul>
         </section>
         <h2 id="weather-results" class="results"></h2>
-        <div id="large-box">
-            <div id="big-box" class="hide1">
-                <div id="loc-box" class="hide2">
-                    <div id="loc-title">                    
+        <div id="large-box" class="hide1">
+            <div id="big-box" class="hide2">
+                <div class="loc-box">
+                    <div id="loc-title">   
                         <p id="loc-area"></p>
                         <p id="loc-cur-date"></p>
                         <img src="" id="loc-image" alt=""></p>
