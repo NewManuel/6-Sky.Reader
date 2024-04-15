@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
     <!-- Add styles page -->
     <link rel="stylesheet" href="./styles/style.css" />
 </head>
+
 <body>
     <header>
         <h1>Sky Reader</h1>
@@ -15,36 +17,39 @@
         <section>
             <h2 class="type-title">Search Location</h2>
             <form id="city-search" class="type">
-                <input name="location" id="area" autofocus="true" class="textbar"   placeholder="Houston">
+                <input name="location" id="area" autofocus="true" class="textbar" placeholder="Houston">
                 <button type="submit" class="search-btn">
-                Type Location Here
+                    Type Location Here
                 </button>
             </form>
             <ul id="previous-search"></ul>
         </section>
-        <h2 id="weather-results" class="results"></h2>
-        <div id="large-box" class="hide1">
-            <div id="big-box" class="hide2">
-                <div class="loc-box">
-                    <div id="loc-title">   
-                        <p id="loc-area"></p>
-                        <p id="loc-cur-date"></p>
-                        <img src="" id="loc-image" alt=""></p>
+        <!-- <h2 id="weather-results" class="results"></h2> -->
+        <div class="main-container hide2" id="main-container">
+            <div id="large-box" class="hide1">
+                <div id="big-box" class="hide2">
+                    <div class="loc-box">
+                        <div id="loc-title">
+                            <p id="loc-area"></p>
+                            <p id="loc-cur-date"></p>
+                            <img src="" id="loc-image" alt=""></p>
+                        </div>
                     </div>
-                </div>           
-                <div id="lox box2">
-                    <p id="loc-temp"></p>
-                    <p id="loc-wind"></p>
-                    <p id="loc-humid"></p>
+                    <div id="lox box2">
+                        <p id="loc-temp"></p>
+                        <p id="loc-wind"></p>
+                        <p id="loc-humid"></p>
+                    </div>
                 </div>
             </div>
-        </div>
             <div id="fcast-box">
                 <h2 class="fcast-title">Forecast</h2>
                 <div id="fcast-results">
                 </div>
             </div>
+        </div>
     </div>
 </body>
 <script src="./script/script.js"></script>
+
 </html>

@@ -79,6 +79,10 @@ section {
   align-self: flex-start;
 }
 
+.main-container{
+  display: block;
+}
+
 .loc-box {
   display: flex;
   flex-direction: column;

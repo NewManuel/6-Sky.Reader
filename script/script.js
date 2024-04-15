@@ -15,7 +15,7 @@ let fcastResults = document.querySelector("#fcast-results");
 let bigBox = document.querySelector("#big-box");
 let results = document.querySelector("#results");
 let largeBox = document.querySelector("#large-box");
-
+let mainContainer = document.querySelector("#main-container");
 
 //The showSearches() function is defined to populate the recent searches list from local storage. 
 function showSearches() {
@@ -124,8 +124,9 @@ async function searchHandle(e, shouldPushToLs = true) {
                 fcastResults.appendChild(fcastReEl);
             });
 
-        results.classList.add("hide2");
-        largeBox.classList.remove("hidden");
+        // results.classList.add("hide2");
+        // largeBox.classList.remove("hidden");
+        mainContainer.classList.remove("hide2")
 
         showSearches();
 
